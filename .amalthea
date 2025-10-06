@@ -1,0 +1,238 @@
+# Amalthea Configuration File
+# This file allows you to set default configurations for Amalthea
+# Place this file in your project root or home directory (~/.amalthea)
+
+# =============================================================================
+# AI PROVIDER CONFIGURATION
+# =============================================================================
+
+# Default AI provider (openai, anthropic, google, local)
+provider = "openai"
+
+# Default model for each provider
+[models]
+openai_default = "gpt-4o-mini"
+anthropic_default = "claude-3-sonnet"  # Coming v0.2.1
+google_default = "gemini-1.5-flash"    # Coming v0.2.2
+local_default = "phi3:mini"            # Coming v0.2.3
+
+# =============================================================================
+# API KEYS (Optional - prefer environment variables)
+# =============================================================================
+
+# API keys (use environment variables for security)
+# openai_api_key = "sk-your-openai-key"
+# anthropic_api_key = "sk-ant-your-claude-key"
+# google_api_key = "your-google-gemini-key"
+
+# =============================================================================
+# ENDPOINTS CONFIGURATION
+# =============================================================================
+
+[endpoints]
+# OpenAI endpoint
+openai_base_url = "https://api.openai.com/v1"
+
+# Anthropic endpoint (coming soon)
+anthropic_base_url = "https://api.anthropic.com"
+
+# Google endpoint (coming soon)
+google_base_url = "https://generativelanguage.googleapis.com"
+
+# Local Ollama endpoint
+ollama_host = "http://localhost:11434"
+
+# Custom endpoints for self-hosted models
+# custom_openai = "https://your-openai-proxy.com/v1"
+# custom_anthropic = "https://your-claude-proxy.com"
+
+# =============================================================================
+# OUTPUT CONFIGURATION
+# =============================================================================
+
+[output]
+# Default output format (json, csv, both)
+format = "both"
+
+# Default output directory
+output_dir = "./amalthea-results"
+
+# Filename patterns
+results_filename = "test-results-{timestamp}.json"
+csv_filename = "test-results-{timestamp}.csv"
+suite_filename = "test-suite-{timestamp}.json"
+
+# =============================================================================
+# TEST GENERATION SETTINGS
+# =============================================================================
+
+[testing]
+# Default number of test cases per endpoint
+test_cases_per_endpoint = 6
+
+# Test timeout in seconds
+timeout = 30
+
+# Retry attempts for failed tests
+retry_attempts = 2
+
+# Include performance benchmarks
+include_performance = true
+
+# Generate negative test cases
+include_negative_tests = true
+
+# =============================================================================
+# KNOWLEDGE BASE SETTINGS
+# =============================================================================
+
+[knowledge_base]
+# Default knowledge base file
+default_kb_file = "./knowledge-base.json"
+
+# Auto-discover knowledge base files
+auto_discover = true
+
+# Knowledge base search paths
+search_paths = [
+    "./kb/",
+    "./knowledge/", 
+    "./data/",
+    "~/.amalthea/kb/"
+]
+
+# =============================================================================
+# COST OPTIMIZATION
+# =============================================================================
+
+[cost_optimization]
+# Prefer generate-only mode for CI/CD
+prefer_generate_only = false
+
+# Cache test suites to avoid regeneration
+cache_test_suites = true
+
+# Cache directory
+cache_dir = "~/.amalthea/cache"
+
+# Cache TTL in hours
+cache_ttl = 24
+
+# Use cheaper models for simple APIs
+auto_model_selection = true
+
+# =============================================================================
+# LOGGING CONFIGURATION
+# =============================================================================
+
+[logging]
+# Log level (error, warn, info, debug, trace)
+level = "info"
+
+# Log to file
+log_to_file = false
+
+# Log file path
+log_file = "./amalthea.log"
+
+# Enable colored output
+colored_output = true
+
+# =============================================================================
+# HTTP CONFIGURATION
+# =============================================================================
+
+[http]
+# Request timeout in seconds
+timeout = 30
+
+# Maximum retries for failed requests
+max_retries = 3
+
+# Retry delay in milliseconds
+retry_delay = 1000
+
+# User agent string
+user_agent = "Amalthea/0.2.0"
+
+# SSL verification
+verify_ssl = true
+
+# =============================================================================
+# PROJECT-SPECIFIC SETTINGS
+# =============================================================================
+
+[project]
+# Project name (used in reports)
+name = "My API Project"
+
+# API base URL for relative paths
+base_url = "https://api.example.com"
+
+# Default headers for all requests
+[project.headers]
+# Authorization = "Bearer your-token"
+# Content-Type = "application/json"
+# User-Agent = "Amalthea-Test-Agent"
+
+# =============================================================================
+# INTERACTIVE MODE SETTINGS
+# =============================================================================
+
+[interactive]
+# Skip confirmation prompts
+auto_confirm = false
+
+# Default HTTP method in interactive mode
+default_method = "GET"
+
+# Show detailed help in interactive mode
+show_help = true
+
+# Save interactive sessions
+save_sessions = true
+
+# Session history file
+session_history = "~/.amalthea/history.json"
+
+# =============================================================================
+# CI/CD INTEGRATION
+# =============================================================================
+
+[cicd]
+# Exit with error code if success rate below threshold
+fail_on_low_success_rate = true
+
+# Success rate threshold (percentage)
+success_rate_threshold = 80.0
+
+# Generate JUnit XML reports
+generate_junit = false
+
+# JUnit XML output file
+junit_output = "./amalthea-junit.xml"
+
+# Integration with popular CI systems
+github_actions = true
+gitlab_ci = false
+jenkins = false
+
+# =============================================================================
+# ADVANCED SETTINGS
+# =============================================================================
+
+[advanced]
+# Parallel test execution (future feature)
+parallel_execution = false
+
+# Max parallel workers
+max_workers = 4
+
+# Memory usage limit (MB)
+memory_limit = 512
+
+# Enable experimental features
+experimental_features = false
+
+# Debug mode
+debug_mode = false

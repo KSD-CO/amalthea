@@ -1,0 +1,131 @@
+{
+  "api_name": "E-Invoice API",
+  "description": "Knowledge base for e-invoice API testing with valid data patterns and examples",
+  "valid_data": {
+    "invoice_id": {
+      "description": "Valid invoice ID patterns for e-invoice system",
+      "examples": [
+        "INV-2024-001234",
+        "INV-2024-005678",
+        "INV-2025-000001",
+        "INV-2025-123456"
+      ],
+      "data_type": "string",
+      "pattern": "^INV-\\d{4}-\\d{6}$"
+    },
+    "order_id": {
+      "description": "Valid order ID patterns",
+      "examples": [
+        "ORD-20241002-001",
+        "ORD-20241002-002",
+        "ORD-20250101-001",
+        "ORD-20250102-999"
+      ],
+      "data_type": "string",
+      "pattern": "^ORD-\\d{8}-\\d{3}$"
+    },
+    "customer_info": {
+      "description": "Valid customer information structure",
+      "examples": [
+        {
+          "customer_id": "CUST-001234",
+          "name": "Công ty TNHH ABC",
+          "tax_code": "0123456789",
+          "address": "123 Đường ABC, Quận 1, TP.HCM",
+          "email": "contact@abc.com",
+          "phone": "0901234567"
+        },
+        {
+          "customer_id": "CUST-005678",
+          "name": "Công ty Cổ phần XYZ",
+          "tax_code": "0987654321",
+          "address": "456 Đường XYZ, Quận 2, TP.HCM",
+          "email": "info@xyz.com",
+          "phone": "0909876543"
+        }
+      ],
+      "data_type": "object"
+    },
+    "invoice_date": {
+      "description": "Valid invoice date formats",
+      "examples": [
+        "2024-10-02",
+        "2024-12-31",
+        "2025-01-01",
+        "2025-03-15"
+      ],
+      "data_type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "amount": {
+      "description": "Valid invoice amounts",
+      "examples": [
+        1000000,
+        2500000,
+        5000000,
+        10000000
+      ],
+      "data_type": "number"
+    },
+    "items": {
+      "description": "Valid invoice item structure",
+      "examples": [
+        [
+          {
+            "item_id": "ITEM-001",
+            "name": "Sản phẩm A",
+            "quantity": 10,
+            "unit_price": 100000,
+            "total": 1000000
+          },
+          {
+            "item_id": "ITEM-002", 
+            "name": "Sản phẩm B",
+            "quantity": 5,
+            "unit_price": 200000,
+            "total": 1000000
+          }
+        ]
+      ],
+      "data_type": "array"
+    },
+    "payment_method": {
+      "description": "Valid payment methods",
+      "examples": [
+        "CASH",
+        "BANK_TRANSFER",
+        "CREDIT_CARD",
+        "E_WALLET"
+      ],
+      "data_type": "string"
+    },
+    "status": {
+      "description": "Valid invoice status values",
+      "examples": [
+        "DRAFT",
+        "PENDING",
+        "APPROVED",
+        "SENT",
+        "PAID",
+        "CANCELLED"
+      ],
+      "data_type": "string"
+    },
+    "tax_info": {
+      "description": "Valid tax information structure",
+      "examples": [
+        {
+          "tax_rate": 10,
+          "tax_amount": 100000,
+          "tax_code": "VAT10"
+        },
+        {
+          "tax_rate": 8,
+          "tax_amount": 80000,
+          "tax_code": "VAT8"
+        }
+      ],
+      "data_type": "object"
+    }
+  }
+}
