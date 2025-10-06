@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  amalthea:
+    image: ksdco/amalthea:0.2.2
+    env_file:
+      - .env
+    volumes:
+      - ./:/data
+    working_dir: /data
+    profiles:
+      - tools
+
+  # Local Ollama service for offline AI
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    profiles:
+      - ollama
+
+volumes:
+  ollama_data:

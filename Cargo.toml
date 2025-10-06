@@ -1,0 +1,62 @@
+[package]
+name = "amalthea"
+version = "0.2.5"
+edition = "2021"
+default-run = "amalthea"
+authors = ["James Vu <ttvuhm@gmail.com>"]
+description = "AI-powered test generation and execution tool - harnessing the volcanic power of Jupiter's moon"
+license = "MIT"
+homepage = "https://amalthea.cloud"
+repository = "https://github.com/KSD-CO/amalthea"
+readme = "README.md"
+keywords = ["api", "testing", "openai", "swagger", "ai"]
+categories = ["command-line-utilities", "development-tools", "web-programming"]
+exclude = [
+    "tests/*", 
+    "examples/*", 
+    ".github/*",
+    "target/*",
+    "*.tar.gz",
+    "Dockerfile*",
+    "docker-compose*",
+    "RESTRUCTURING_STATUS.md",
+    "sample_*.json",
+    "example_*.json"
+]
+
+[[bin]]
+name = "amalthea"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+async-openai = "0.29"
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+colored = "2"
+futures = "0.3"
+dotenvy = "0.15"
+url = "2"
+urlencoding = "2"
+dialoguer = "0.11"
+serde_yaml = "0.9"
+csv = "1.3"
+chrono = { version = "0.4", features = ["serde"] }
+indexmap = "2.0"
+thiserror = "2.0.17"
+rand = "0.8"
+# Future AI provider dependencies (to be enabled in next versions)
+# claude-rs = { version = "0.1", optional = true }
+# google-generative-ai-rs = { version = "0.1", optional = true }
+# ollama-rs = { version = "0.1", optional = true }
+
+[features]
+default = ["openai"]
+openai = []
+# claude = ["dep:claude-rs"]  # Future feature
+# gemini = ["dep:google-generative-ai-rs"]  # Future feature  
+# local = ["dep:ollama-rs"]  # Future feature
+all-providers = []  # Future: enable all AI providers

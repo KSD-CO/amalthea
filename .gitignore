@@ -1,0 +1,39 @@
+# Rust
+target/
+Cargo.lock
+*.pdb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Test results
+test-results.json
+*_test_results.json
+*.log
+
+# Documentation
+book/
+
+# Temporary files
+*.tmp
+temp/
+
+# Coverage
+tarpaulin-report.html
+cobertura.xml
+
+# Dependencies
+node_modules/
